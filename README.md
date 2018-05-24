@@ -59,9 +59,9 @@ We recommend using jitpack to grab the wrapper into your project. Add the follow
 ```
 ```
   <dependency>
-	    <groupId>com.github.USER</groupId>
-	    <artifactId>REPO_HERE</artifactId>
-	    <version>TAG_HERE</version>
+	    <groupId>com.github.voiceittech</groupId>
+	    <artifactId>VoiceIt2-Java</artifactId>
+	    <version>0.0.1</version>
   </dependency>
 ```
 For Gradle, we recommend you disable offline mode in case you are using Intellij. We also recommend using Java8. 
@@ -78,7 +78,7 @@ allprojects {
   
 ```
 dependencies {
-	        implementation 'com.github.USER:REPO_HERE:TAG_HERE'
+	        implementation 'com.github.voiceittech:VoiceIt2-Java:0.0.1'
 	}
 ```
 
