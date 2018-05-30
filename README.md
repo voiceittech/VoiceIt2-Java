@@ -82,6 +82,10 @@ dependencies {
 	}
 ```
 
+### Initialization
+```
+myVoiceIt VoiceIt2 = new VoiceIt2("API_KEY_HERE","API_TOKEN_HERE")
+```
 
 ### API calls
 
