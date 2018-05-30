@@ -85,6 +85,12 @@ dependencies {
 
 ### API calls
 
+### Initialization
+
+```java
+VoiceIt2 myVoiceIt = new VoiceIt2("YOUR_KEY_HERE","YOUR_TOKEN_HERE")
+```
+
 ### User API Calls
 
 #### Get All Users
