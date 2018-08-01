@@ -11,11 +11,14 @@ import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
 
 public class VoiceIt2 {
@@ -25,14 +28,28 @@ public class VoiceIt2 {
 	
 	public VoiceIt2(String apiKey, String apiToken){
 	        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-	        credentialsProvider.setCredentials(AuthScope.ANY, 
-	            new UsernamePasswordCredentials(apiKey, apiToken));
-		final List<Header> headers = new ArrayList<Header>();
+	        credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(apiKey, apiToken));
+	        final List<Header> headers = new ArrayList<Header>();
 	        headers.add(new BasicHeader("platformId", "29"));
 	        httpClient =  HttpClientBuilder.create()
 	        		.setDefaultCredentialsProvider(credentialsProvider)
 	        		.setDefaultHeaders(headers)
 	        		.build();
+	}
+	
+	public VoiceIt2(String apiKey, String apiToken, String customBaseURL){
+        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(apiKey, apiToken));
+        final List<Header> headers = new ArrayList<Header>();
+        headers.add(new BasicHeader("platformId", "29"));
+        SSLContextBuilder sslBuilder = new SSLContextBuilder();
+        sslBuilder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslBuilder.build());
+          httpClient =  HttpClientBuilder.create()
+              .setSSLSocketFactory(sslsf)
+              .setDefaultCredentialsProvider(credentialsProvider)
+              .setDefaultHeaders(headers)
+              .build();
 	}
 	
 	public String getAllUsers() {
