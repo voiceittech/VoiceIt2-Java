@@ -1,7 +1,10 @@
 package main.java;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -12,6 +15,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 
 public class VoiceIt2 {
