@@ -169,9 +169,9 @@ class TestVoiceIt2 {
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan2.mov", "./videoEnrollmentArmaan2.mov");
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan3.mov", "./videoEnrollmentArmaan3.mov");
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoVerificationArmaan1.mov", "./videoVerificationArmaan1.mov");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov", "./videoEnrollmentStephen1.mov");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov", "./videoEnrollmentStephen2.mov");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen3.mov", "./videoEnrollmentStephen3.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov", "./videoEnrollmentStephen1video.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov", "./videoEnrollmentStephen2video.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen3.mov", "./videoEnrollmentStephen3video.mov");
 
     ret = myVoiceIt.createVideoEnrollment(userId1, "en-US", phrase, "./videoEnrollmentArmaan1.mov");
     int enrollmentId1 = getEnrollmentId(ret);
@@ -192,15 +192,15 @@ class TestVoiceIt2 {
 	  assertEquals(200, getStatus(ret));
 	  assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen1.mov"));
+    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen1video.mov"));
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen2.mov"));
+    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen2video.mov"));
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen3.mov"));
+    ret = myVoiceIt.createVideoEnrollment(userId2, "en-US", phrase, new File("./videoEnrollmentStephen3video.mov"));
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
@@ -302,10 +302,10 @@ class TestVoiceIt2 {
     deleteFile("./videoEnrollmentArmaan1.mov");
     deleteFile("./videoEnrollmentArmaan2.mov");
     deleteFile("./videoEnrollmentArmaan3.mov");
-    deleteFile("./videoEnrollmentStephen1.mov");
-    deleteFile("./videoEnrollmentStephen2.mov");
-    deleteFile("./videoEnrollmentStephen3.mov");
-    deleteFile("./videoVerificationArmaan1.mov");
+    deleteFile("./videoEnrollmentStephen1video.mov");
+    deleteFile("./videoEnrollmentStephen2video.mov");
+    deleteFile("./videoEnrollmentStephen3video.mov");
+    deleteFile("./videoVerificationArmaan1video.mov");
 
   }
 
@@ -467,9 +467,9 @@ class TestVoiceIt2 {
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan1.mp4", "./faceEnrollmentArmaan1.mp4");
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan2.mp4", "./faceEnrollmentArmaan2.mp4");
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan3.mp4", "./faceEnrollmentArmaan3.mp4");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov", "./videoEnrollmentStephen1.mov");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov", "./videoEnrollmentStephen2.mov");
-    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen3.mov", "./videoEnrollmentStephen3.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov", "./videoEnrollmentStephen1face.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov", "./videoEnrollmentStephen2face.mov");
+    downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen3.mov", "./videoEnrollmentStephen3face.mov");
     downloadFile("https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationArmaan1.mp4", "./faceVerificationArmaan1.mp4");
 
     ret = myVoiceIt.createFaceEnrollment(userId1, "./faceEnrollmentArmaan1.mp4");
@@ -487,18 +487,15 @@ class TestVoiceIt2 {
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen1.mov");
-    System.out.println(ret);
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen1face.mov");
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen2.mov");
-    System.out.println(ret);
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen2face.mov");
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen3.mov");
-    System.out.println(ret);
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentStephen3face.mov");
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
@@ -619,9 +616,9 @@ class TestVoiceIt2 {
     deleteFile("./faceEnrollmentArmaan1.mp4");
     deleteFile("./faceEnrollmentArmaan2.mp4");
     deleteFile("./faceEnrollmentArmaan3.mp4");
-    deleteFile("./videoEnrollmentStephen1.mov");
-    deleteFile("./videoEnrollmentStephen2.mov");
-    deleteFile("./videoEnrollmentStephen3.mov");
+    deleteFile("./videoEnrollmentStephen1face.mov");
+    deleteFile("./videoEnrollmentStephen2face.mov");
+    deleteFile("./videoEnrollmentStephen3face.mov");
     deleteFile("./faceVerificationArmaan1.mp4");
 
   }
