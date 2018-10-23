@@ -499,6 +499,7 @@ class TestVoiceIt2 {
 
     // Face Identification
     ret = myVoiceIt.faceIdentification(groupId, "./faceVerificationArmaan1.mp4");
+    System.out.println(ret);
     assertEquals(200, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
     assertEquals(groupId, getGroupId(ret));
