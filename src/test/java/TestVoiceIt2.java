@@ -484,6 +484,18 @@ class TestVoiceIt2 {
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentArmaan1.mov");
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentArmaan2.mov");
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
+    ret = myVoiceIt.createFaceEnrollment(userId2, "./videoEnrollmentArmaan3.mov");
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
     ret = myVoiceIt.getAllFaceEnrollments(userId1);
     assertEquals(200, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
@@ -527,7 +539,7 @@ class TestVoiceIt2 {
 
     // By Url
 
-    ret = "";
+  ret = "";
 	ret = myVoiceIt.createUser();
 	userId1 = getUserId(ret);
 	ret = myVoiceIt.createUser();
@@ -548,6 +560,21 @@ class TestVoiceIt2 {
     assertEquals("SUCC", getResponseCode(ret));
 
     ret = myVoiceIt.createFaceEnrollmentByUrl(userId1, "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan3.mp4");
+    faceEnrollmentId3 = getFaceEnrollmentId(ret);
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
+    ret = myVoiceIt.createFaceEnrollmentByUrl(userId2, "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan1.mov");
+    faceEnrollmentId1 = getFaceEnrollmentId(ret);
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
+    ret = myVoiceIt.createFaceEnrollmentByUrl(userId2, "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan2.mov");
+    faceEnrollmentId2 = getFaceEnrollmentId(ret);
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
+    ret = myVoiceIt.createFaceEnrollmentByUrl(userId2, "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan3.mov");
     faceEnrollmentId3 = getFaceEnrollmentId(ret);
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
