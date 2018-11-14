@@ -658,4 +658,14 @@ public class VoiceIt2 {
 			return e.getMessage();
 		}
 	}
+
+
+	public String createUserToken(String userId) {
+		try {
+			return EntityUtils.toString(httpClient.execute(
+					new HttpPost(BASE_URL + "/users/" + userId + "/token")).getEntity());
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
 }
