@@ -146,7 +146,7 @@ class TestVoiceIt2 {
     assertEquals("SUCC", getResponseCode(ret));
 
     // Create User Token
-    ret = myVoiceIt.createUserToken(userId);
+    ret = myVoiceIt.createUserToken(userId, 5);
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 

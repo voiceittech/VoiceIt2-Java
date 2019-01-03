@@ -676,10 +676,16 @@ public class VoiceIt2 {
 	}
 
 
-	public String createUserToken(String userId) {
+	public String createUserToken(String userId, int timeOut) {
+    String url;
+    if (notificationUrl.equals("")) {
+      url = BASE_URL + "/users/" + userId + "/token?timeOut" + Integer.toString(timeOut);
+    } else {
+      url = BASE_URL + "/users/" + userId + "/token" + notificationUrl + "&timeOut=" + Integer.toString(timeOut);
+    }
 		try {
 			return EntityUtils.toString(httpClient.execute(
-					new HttpPost(BASE_URL + "/users/" + userId + "/token" + notificationUrl)).getEntity());
+					new HttpPost(url)).getEntity());
 		} catch (Exception e) {
 			return e.getMessage();
 		}
