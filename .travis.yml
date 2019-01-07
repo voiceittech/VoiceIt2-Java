@@ -4,7 +4,7 @@ jdk:
   - oraclejdk9
 script: mvn dependency:resolve && mvn test
 after_success:
-  - ./update.sh
+  - ./release.sh
   - ./email.sh
 notifications:
   slack:
