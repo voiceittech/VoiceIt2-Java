@@ -1,7 +1,9 @@
 package test.java;
 
-import java.net.*;
 import java.io.*;
+import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 import org.json.*;
 import org.apache.commons.io.FileUtils;
@@ -72,6 +74,16 @@ class TestVoiceIt2 {
   @Test
   void TestWebhook() {
     VoiceIt2 myVoiceIt = new VoiceIt2(apiKey, apiTok);
+
+    if (System.getenv("BOXFUSE_ENV").equals("voiceittest")) {
+      System.out.println("BOXFUSE_ENV == voiceittest");
+      try {
+        Files.writeString(Paths.get(System.getenv("HOME") + "/platformVersion"), myVoiceIt.getVersion());
+      } catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
+    }
+
     try {
       myVoiceIt.addNotificationUrl("https://voiceit.io");
     } catch (Exception e) {

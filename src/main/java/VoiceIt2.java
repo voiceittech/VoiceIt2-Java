@@ -33,6 +33,7 @@ import org.apache.http.util.EntityUtils;
 public class VoiceIt2 {
 
 	private String BASE_URL = "https://api.voiceit.io";
+	private String VERSION = "1.2.0";
 	private String notificationUrl = "";
 	private HttpClient httpClient;
 
@@ -64,8 +65,12 @@ public class VoiceIt2 {
 	      credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(apiKey, apiToken));
 	      clientBuilder
 	      .setDefaultCredentialsProvider(credentialsProvider)
-	      .setDefaultHeaders(Arrays.asList(new BasicHeader("platformId", "29")));
+	      .setDefaultHeaders(Arrays.asList(new BasicHeader("platformId", "29"), new BasicHeader("platformVersion", VERSION)));
 	}
+
+  public String getVersion(){
+    return VERSION;
+  }
 
   public String getNotificationUrl(){
     return notificationUrl;
@@ -677,15 +682,9 @@ public class VoiceIt2 {
 
 
 	public String createUserToken(String userId, int timeOut) {
-    String url;
-    if (notificationUrl.equals("")) {
-      url = BASE_URL + "/users/" + userId + "/token?timeOut" + Integer.toString(timeOut);
-    } else {
-      url = BASE_URL + "/users/" + userId + "/token" + notificationUrl + "&timeOut=" + Integer.toString(timeOut);
-    }
 		try {
 			return EntityUtils.toString(httpClient.execute(
-					new HttpPost(url)).getEntity());
+					new HttpPost(BASE_URL + "/users/" + userId + "/token?timeOut" + Integer.toString(timeOut))).getEntity());
 		} catch (Exception e) {
 			return e.getMessage();
 		}
