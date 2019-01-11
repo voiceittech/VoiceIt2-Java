@@ -32,10 +32,10 @@ import org.apache.http.util.EntityUtils;
 
 public class VoiceIt2 {
 
-	private String BASE_URL = "https://api.voiceit.io";
-	private String VERSION = "1.2.0";
+	private static String BASE_URL = "https://api.voiceit.io";
 	private String notificationUrl = "";
 	private HttpClient httpClient;
+	public static final String VERSION = "1.2.1";
 
 	public VoiceIt2(String apiKey, String apiToken){
 			HttpClientBuilder clientBuilder = HttpClientBuilder.create();
@@ -67,10 +67,6 @@ public class VoiceIt2 {
 	      .setDefaultCredentialsProvider(credentialsProvider)
 	      .setDefaultHeaders(Arrays.asList(new BasicHeader("platformId", "29"), new BasicHeader("platformVersion", VERSION)));
 	}
-
-  public String getVersion(){
-    return VERSION;
-  }
 
   public String getNotificationUrl(){
     return notificationUrl;

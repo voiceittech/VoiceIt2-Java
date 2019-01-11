@@ -76,9 +76,8 @@ class TestVoiceIt2 {
     VoiceIt2 myVoiceIt = new VoiceIt2(apiKey, apiTok);
 
     if (System.getenv("BOXFUSE_ENV").equals("voiceittest")) {
-      System.out.println("BOXFUSE_ENV == voiceittest");
       try {
-        Files.writeString(Paths.get(System.getenv("HOME") + "/platformVersion"), myVoiceIt.getVersion());
+        Files.writeString(Paths.get(System.getenv("HOME") + "/platformVersion"), myVoiceIt.VERSION);
       } catch (Exception e) {
         System.out.println(e.getMessage());
       }
