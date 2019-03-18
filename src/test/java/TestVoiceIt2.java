@@ -15,7 +15,7 @@ class TestVoiceIt2 {
 	private String apiKey = System.getenv("VIAPIKEY");
 	private String apiTok = System.getenv("VIAPITOKEN");
 
-	private String phrase = "Never forget tomorrow is a new day";
+	private String phrase = "never forget tomorrow is a new day";
 
   void downloadFile(String source, String destination) {
     try {
@@ -161,6 +161,11 @@ class TestVoiceIt2 {
     assertEquals(201, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
+    // Expire User Token
+    ret = myVoiceIt.expireUserToken(userId);
+    assertEquals(201, getStatus(ret));
+    assertEquals("SUCC", getResponseCode(ret));
+
     // Delete Group
     ret = myVoiceIt.deleteGroup(groupId);
     assertEquals(200, getStatus(ret));
@@ -235,10 +240,6 @@ class TestVoiceIt2 {
 
     // Video Verification
     ret = myVoiceIt.videoVerification(userId1, "en-US", phrase, "./videoVerificationB1.mov");
-    assertEquals(200, getStatus(ret));
-    assertEquals("SUCC", getResponseCode(ret));
-
-    ret = myVoiceIt.videoVerification(userId1, "en-US", phrase, new File("./videoVerificationB1.mov"));
     assertEquals(200, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
@@ -395,17 +396,8 @@ class TestVoiceIt2 {
     assertEquals(200, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
 
-    ret = myVoiceIt.voiceVerification(userId1, "en-US", phrase, new File("./verificationA1.wav"));
-    assertEquals(200, getStatus(ret));
-    assertEquals("SUCC", getResponseCode(ret));
-
     // Voice Identification
     ret = myVoiceIt.voiceIdentification(groupId, "en-US", phrase, "./verificationA1.wav");
-    assertEquals(200, getStatus(ret));
-    assertEquals("SUCC", getResponseCode(ret));
-    assertEquals(userId1, getUserId(ret));
-
-    ret = myVoiceIt.voiceIdentification(groupId, "en-US", phrase, new File("./verificationA1.wav"));
     assertEquals(200, getStatus(ret));
     assertEquals("SUCC", getResponseCode(ret));
     assertEquals(userId1, getUserId(ret));

@@ -35,7 +35,7 @@ public class VoiceIt2 {
 	private static String BASE_URL = "https://api.voiceit.io";
 	private String notificationUrl = "";
 	private HttpClient httpClient;
-	public static final String VERSION = "1.2.2";
+	public static final String VERSION = "1.3.0";
 
 	public VoiceIt2(String apiKey, String apiToken){
 			HttpClientBuilder clientBuilder = HttpClientBuilder.create();
@@ -676,7 +676,6 @@ public class VoiceIt2 {
 		}
 	}
 
-
 	public String createUserToken(String userId, int secondsToTimeout) {
 		try {
 			return EntityUtils.toString(httpClient.execute(
@@ -685,4 +684,14 @@ public class VoiceIt2 {
 			return e.getMessage();
 		}
 	}
+
+	public String expireUserToken(String userId) {
+		try {
+			return EntityUtils.toString(httpClient.execute(
+					new HttpPost(BASE_URL + "/users/" + userId + "/expireTokens" + notificationUrl)).getEntity());
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+
 }
