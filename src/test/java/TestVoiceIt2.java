@@ -1,5 +1,3 @@
-package test.java;
-
 import java.io.*;
 import java.net.*;
 import java.nio.file.Files;
@@ -7,7 +5,8 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 import org.json.*;
 import org.apache.commons.io.FileUtils;
-import main.java.VoiceIt2;
+import voiceit.java.VoiceIt2;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestVoiceIt2 {

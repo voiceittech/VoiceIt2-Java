@@ -1,4 +1,4 @@
-package main.java;
+package voiceit.java;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -35,7 +35,7 @@ public class VoiceIt2 {
 	private static String BASE_URL = "https://api.voiceit.io";
 	private String notificationUrl = "";
 	private HttpClient httpClient;
-	public static final String VERSION = "1.6.1";
+	public static final String VERSION = "1.6.2";
 
 	public VoiceIt2(String apiKey, String apiToken){
 			HttpClientBuilder clientBuilder = HttpClientBuilder.create();
